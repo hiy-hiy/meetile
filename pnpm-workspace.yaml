@@ -1,0 +1,11 @@
+packages:
+  - apps/*
+  - packages/*
+  - tools/*
+
+strictPeerDependencies: true
+# Build tools use their packaged binaries; lifecycle scripts are disabled.
+ignoreScripts: true
+
+overrides:
+  'jest-expo>react-test-renderer': 19.2.8

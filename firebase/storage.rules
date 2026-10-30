@@ -1,0 +1,16 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /normalized/{pieceId}/image {
+      allow get: if request.auth != null
+        && firestore.get(/databases/(default)/documents/subjects/$(request.auth.uid)).data.status == 'active'
+        && firestore.get(/databases/(default)/documents/mediaAccess/$(pieceId)).data.visible == true
+        && request.auth.uid in firestore.get(/databases/(default)/documents/mediaAccess/$(pieceId)).data.epochs
+        && firestore.get(/databases/(default)/documents/mediaAccess/$(pieceId)).data.epochs[request.auth.uid]
+           == firestore.get(/databases/(default)/documents/subjects/$(request.auth.uid)).data.accessEpoch;
+      allow list, write: if false;
+    }
+    // Raw uploads go through an owner-authorized callable/Admin save, without download tokens.
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "types": ["node", "jest"],
+    "paths": {
+      "@puzzle-sns/contracts": ["./packages/contracts/src/index.ts"],
+      "@puzzle-sns/puzzle-engine": ["./packages/puzzle-engine/src/index.ts"]
+    },
+    "moduleResolution": "NodeNext",
+    "skipLibCheck": true
+  },
+  "include": [
+    "packages/**/*.ts",
+    "tools/**/*.ts",
+    "apps/functions/**/*.ts",
+    "tests/**/*.ts",
+    "apps/admin/tests/**/*.ts",
+    "scripts/tests/**/*.ts"
+  ],
+  "exclude": ["**/dist", "**/node_modules"]
+}

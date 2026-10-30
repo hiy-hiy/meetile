@@ -1,0 +1,33 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "types": ["jest", "react", "node"],
+    "paths": {
+      "@puzzle-sns/gallery-demo-assets": [
+        "./src/local/gallery-demo/no-assets.ts"
+      ],
+      "@puzzle-sns/contracts": ["../../packages/contracts/src/index.ts"],
+      "@puzzle-sns/design": ["../../packages/design/src/index.ts"],
+      "@puzzle-sns/proximity-observer": ["./src/cloud/proximity-observer.ts"],
+      "@puzzle-sns/app-layout": ["./src/cloud/layout.tsx"],
+      "@puzzle-sns/app-today": ["./src/cloud/today.tsx"],
+      "@puzzle-sns/app-settings": ["./src/cloud/settings.tsx"]
+    },
+    "allowImportingTsExtensions": true
+  },
+  "include": [
+    "app/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "app.config.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
+}

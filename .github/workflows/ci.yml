@@ -1,0 +1,35 @@
+name: Repository checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm format:check
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test:coverage
+      - run: pnpm test:emulators
+      - run: pnpm test:local
+      - run: pnpm test:admin
+      - run: pnpm check:local-boundaries
+      - run: pnpm check:functions-artifact
+      - run: pnpm build
+      - run: node tools/puzzle-simulator/dist/cli.js --seed 42 --trials 20 --output artifacts/ci-simulation

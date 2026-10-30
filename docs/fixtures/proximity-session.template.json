@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "evidence": "physical",
+  "build": {
+    "label": "UNSET",
+    "sourceSha256": null,
+    "nativeModeConfirmed": false
+  },
+  "criteria": {
+    "status": "proposed",
+    "reference": "GPROX-DRAFT-1"
+  },
+  "devices": [
+    {
+      "id": "D1",
+      "platform": "ios",
+      "model": "iPhone 16",
+      "osVersion": "26.5.2",
+      "availability": "connected",
+      "uwbCapability": "unknown"
+    },
+    {
+      "id": "D2",
+      "platform": "android",
+      "model": "OPPO PDRM00",
+      "osVersion": "13 (API 33)",
+      "availability": "connected",
+      "uwbCapability": "unavailable"
+    }
+  ],
+  "series": [
+    {
+      "id": "S01",
+      "deviceIds": ["D1", "D2"],
+      "kind": "distance",
+      "expectedMethod": "ble",
+      "distanceCm": 10,
+      "thirdDistanceCm": null,
+      "orientation": "back-to-back",
+      "obstruction": "none",
+      "environment": "quiet",
+      "observationLimitMs": 10000,
+      "plannedTrials": 20,
+      "trials": []
+    }
+  ]
+}

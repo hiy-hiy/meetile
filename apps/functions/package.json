@@ -1,0 +1,46 @@
+{
+  "name": "@puzzle-sns/functions",
+  "version": "0.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "@puzzle-sns/contracts": "workspace:*",
+    "@puzzle-sns/puzzle-engine": "workspace:*",
+    "firebase-admin": "14.5.0",
+    "firebase-functions": "7.4.0",
+    "zod": "4.6.5",
+    "@google-cloud/vision": "6.1.1",
+    "@google-cloud/language": "8.1.1",
+    "sharp": "0.35.5"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./server/admin-moderation": {
+      "types": "./src/services/admin-moderation.ts",
+      "default": "./dist/services/admin-moderation.js"
+    },
+    "./server/photo-deletion": {
+      "types": "./src/services/photo-deletion.ts",
+      "default": "./dist/services/photo-deletion.js"
+    },
+    "./server/held-review": {
+      "types": "./src/services/held-review.ts",
+      "default": "./dist/services/held-review.js"
+    },
+    "./server/inquiries": {
+      "types": "./src/services/inquiries.ts",
+      "default": "./dist/services/inquiries.js"
+    },
+    "./server/photo-objects": {
+      "types": "./src/services/photo-objects.ts",
+      "default": "./dist/services/photo-objects.js"
+    }
+  }
+}

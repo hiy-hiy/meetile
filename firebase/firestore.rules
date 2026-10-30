@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function canReadView(uid, boardId) {
+      let subject = get(/databases/$(database)/documents/subjects/$(uid));
+      let grant = get(/databases/$(database)/documents/viewGrants/$(uid)/boards/$(boardId));
+      return request.auth != null && request.auth.uid == uid
+        && subject.data.status == 'active'
+        && grant.data.active == true
+        && grant.data.accessEpoch == subject.data.accessEpoch;
+    }
+    match /views/{uid}/boards/{boardId} {
+      allow get: if canReadView(uid, boardId);
+      // Discovery/listing is served through authorized APIs, not arbitrary queries.
+      allow list, write: if false;
+    }
+    match /clientState/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid
+        && get(/databases/$(database)/documents/subjects/$(uid)).data.status == 'active';
+      allow list, write: if false;
+    }
+    match /fitViews/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid
+        && get(/databases/$(database)/documents/subjects/$(uid)).data.status == 'active';
+      allow list, write: if false;
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

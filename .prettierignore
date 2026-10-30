@@ -1,0 +1,21 @@
+node_modules/
+.tools/
+dist/
+coverage/
+artifacts/
+pnpm-lock.yaml
+apps/functions/deploy/
+firebase/functions.package-lock.json
+# Preserve the authoritative originals and the existing trace table layout.
+AGENTS.md
+docs/PRODUCT_SPEC.md
+docs/IMPLEMENTATION_PLAN.md
+
+apps/mobile/.expo/
+apps/mobile/src/local/gallery-demo/assets.local/
+apps/mobile/ios/
+apps/mobile/android/
+
+apps/admin/.next/
+apps/admin/next-env.d.ts
+apps/mobile/modules/*/android/build/

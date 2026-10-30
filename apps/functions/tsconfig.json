@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "Node20",
+    "composite": true,
+    "declaration": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/index.local.ts", "src/local/**"],
+  "references": [
+    { "path": "../../packages/contracts" },
+    { "path": "../../packages/puzzle-engine" }
+  ]
+}

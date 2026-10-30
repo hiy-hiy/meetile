@@ -1,0 +1,17 @@
+{
+  "cli": { "version": ">=18.0.0", "appVersionSource": "local" },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "node": "22.23.3",
+      "env": { "APP_ENV": "development" }
+    },
+    "staging": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "node": "22.23.3",
+      "env": { "APP_ENV": "staging" }
+    }
+  }
+}
