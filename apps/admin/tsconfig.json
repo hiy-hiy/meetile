@@ -18,7 +18,8 @@
     ],
     "types": ["node"],
     "paths": {
-      "@puzzle-sns/contracts": ["../../packages/contracts/src/index.ts"]
+      "@puzzle-sns/contracts": ["../../packages/contracts/src/index.ts"],
+      "@puzzle-sns/puzzle-engine": ["../../packages/puzzle-engine/src/index.ts"]
     }
   },
   "include": [
